@@ -1,0 +1,13 @@
+D:\GraZaDuzoZaMalo\GraGUI\bin\Debug\GraGUI.exe.config
+D:\GraZaDuzoZaMalo\GraGUI\bin\Debug\GraGUI.exe
+D:\GraZaDuzoZaMalo\GraGUI\bin\Debug\GraGUI.pdb
+D:\GraZaDuzoZaMalo\GraGUI\bin\Debug\ModelGry.dll
+D:\GraZaDuzoZaMalo\GraGUI\bin\Debug\ModelGry.pdb
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csprojAssemblyReference.cache
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.Form1.resources
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.Properties.Resources.resources
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csproj.GenerateResource.cache
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csproj.CoreCompileInputs.cache
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csproj.CopyComplete
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.exe
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.pdb
