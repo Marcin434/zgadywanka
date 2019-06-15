@@ -39,5 +39,10 @@ namespace GraGUI
 
             // ods³oniæ kolejne elemnty formularza
         }
+
+        private void ButtonPrzerwij_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
