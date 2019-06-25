@@ -64,7 +64,6 @@ namespace ModelGry
         {
             Stan = StanGry.Poddana;
         }
-
         /// <summary>
         /// Generuje liczbę pseudolosową z podanego zakresu, włącznie z krańcami
         /// </summary>
