@@ -29,6 +29,7 @@ namespace GraGUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonNowaGra = new System.Windows.Forms.Button();
             this.groupBoxLosuj = new System.Windows.Forms.GroupBox();
             this.buttonLosuj = new System.Windows.Forms.Button();
@@ -40,15 +41,18 @@ namespace GraGUI
             this.buttonInfo = new System.Windows.Forms.Button();
             this.buttonPrzerwij = new System.Windows.Forms.Button();
             this.groupBoxGra = new System.Windows.Forms.GroupBox();
+            this.labelOdpowiedz = new System.Windows.Forms.Label();
             this.buttonSprawdz = new System.Windows.Forms.Button();
             this.textBoxPropozycja = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.labelOdpowiedz = new System.Windows.Forms.Label();
             this.groupBoxKoniec = new System.Windows.Forms.GroupBox();
-            this.labelLiczbaRuchow = new System.Windows.Forms.Label();
-            this.labelWylosowana = new System.Windows.Forms.Label();
-            this.labelWylosowanaD = new System.Windows.Forms.Label();
+            this.labelOdgadnieta = new System.Windows.Forms.Label();
             this.labelLiczbaRuchowD = new System.Windows.Forms.Label();
+            this.labelWylosowanaD = new System.Windows.Forms.Label();
+            this.labelWylosowana = new System.Windows.Forms.Label();
+            this.labelLiczbaRuchow = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelTimer = new System.Windows.Forms.Label();
             this.groupBoxLosuj.SuspendLayout();
             this.groupBoxGra.SuspendLayout();
             this.groupBoxKoniec.SuspendLayout();
@@ -98,6 +102,7 @@ namespace GraGUI
             // 
             // textBoxOd
             // 
+            this.textBoxOd.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxOd.Location = new System.Drawing.Point(68, 28);
             this.textBoxOd.Name = "textBoxOd";
             this.textBoxOd.Size = new System.Drawing.Size(100, 20);
@@ -123,12 +128,14 @@ namespace GraGUI
             // 
             // buttonHistoria
             // 
+            this.buttonHistoria.Enabled = false;
             this.buttonHistoria.Location = new System.Drawing.Point(12, 438);
             this.buttonHistoria.Name = "buttonHistoria";
             this.buttonHistoria.Size = new System.Drawing.Size(75, 23);
             this.buttonHistoria.TabIndex = 3;
             this.buttonHistoria.Text = "Historia gry";
             this.buttonHistoria.UseVisualStyleBackColor = true;
+            this.buttonHistoria.Click += new System.EventHandler(this.ButtonHistoria_Click);
             // 
             // buttonInfo
             // 
@@ -138,9 +145,11 @@ namespace GraGUI
             this.buttonInfo.TabIndex = 4;
             this.buttonInfo.Text = "Info";
             this.buttonInfo.UseVisualStyleBackColor = true;
+            this.buttonInfo.Click += new System.EventHandler(this.ButtonInfo_Click);
             // 
             // buttonPrzerwij
             // 
+            this.buttonPrzerwij.Enabled = false;
             this.buttonPrzerwij.Location = new System.Drawing.Point(217, 12);
             this.buttonPrzerwij.Name = "buttonPrzerwij";
             this.buttonPrzerwij.Size = new System.Drawing.Size(75, 23);
@@ -151,21 +160,31 @@ namespace GraGUI
             // 
             // groupBoxGra
             // 
+            this.groupBoxGra.Controls.Add(this.labelTimer);
             this.groupBoxGra.Controls.Add(this.labelOdpowiedz);
             this.groupBoxGra.Controls.Add(this.buttonSprawdz);
             this.groupBoxGra.Controls.Add(this.textBoxPropozycja);
             this.groupBoxGra.Controls.Add(this.label3);
             this.groupBoxGra.Location = new System.Drawing.Point(13, 173);
             this.groupBoxGra.Name = "groupBoxGra";
-            this.groupBoxGra.Size = new System.Drawing.Size(279, 139);
+            this.groupBoxGra.Size = new System.Drawing.Size(279, 148);
             this.groupBoxGra.TabIndex = 6;
             this.groupBoxGra.TabStop = false;
             this.groupBoxGra.Text = "Gra";
             this.groupBoxGra.Visible = false;
             // 
+            // labelOdpowiedz
+            // 
+            this.labelOdpowiedz.AutoSize = true;
+            this.labelOdpowiedz.Location = new System.Drawing.Point(19, 103);
+            this.labelOdpowiedz.Name = "labelOdpowiedz";
+            this.labelOdpowiedz.Size = new System.Drawing.Size(60, 13);
+            this.labelOdpowiedz.TabIndex = 5;
+            this.labelOdpowiedz.Text = "OdpowiedŸ";
+            // 
             // buttonSprawdz
             // 
-            this.buttonSprawdz.Location = new System.Drawing.Point(185, 55);
+            this.buttonSprawdz.Location = new System.Drawing.Point(185, 52);
             this.buttonSprawdz.Name = "buttonSprawdz";
             this.buttonSprawdz.Size = new System.Drawing.Size(75, 23);
             this.buttonSprawdz.TabIndex = 4;
@@ -179,50 +198,58 @@ namespace GraGUI
             this.textBoxPropozycja.Name = "textBoxPropozycja";
             this.textBoxPropozycja.Size = new System.Drawing.Size(100, 20);
             this.textBoxPropozycja.TabIndex = 2;
-            this.textBoxPropozycja.TextChanged += new System.EventHandler(this.TextBoxPropozycja_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(19, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 13);
+            this.label3.Size = new System.Drawing.Size(161, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Zmienna wylosowana. Odgadnij j¹!";
-            this.label3.Click += new System.EventHandler(this.Label4_Click);
-            // 
-            // labelOdpowiedz
-            // 
-            this.labelOdpowiedz.AutoSize = true;
-            this.labelOdpowiedz.Location = new System.Drawing.Point(19, 103);
-            this.labelOdpowiedz.Name = "labelOdpowiedz";
-            this.labelOdpowiedz.Size = new System.Drawing.Size(60, 13);
-            this.labelOdpowiedz.TabIndex = 5;
-            this.labelOdpowiedz.Text = "OdpowiedŸ";
+            this.label3.Text = "Liczba wylosowana. Odgadnij j¹!";
             // 
             // groupBoxKoniec
             // 
+            this.groupBoxKoniec.Controls.Add(this.labelOdgadnieta);
             this.groupBoxKoniec.Controls.Add(this.labelLiczbaRuchowD);
             this.groupBoxKoniec.Controls.Add(this.labelWylosowanaD);
             this.groupBoxKoniec.Controls.Add(this.labelWylosowana);
             this.groupBoxKoniec.Controls.Add(this.labelLiczbaRuchow);
             this.groupBoxKoniec.Location = new System.Drawing.Point(13, 327);
             this.groupBoxKoniec.Name = "groupBoxKoniec";
-            this.groupBoxKoniec.Size = new System.Drawing.Size(279, 73);
+            this.groupBoxKoniec.Size = new System.Drawing.Size(279, 105);
             this.groupBoxKoniec.TabIndex = 8;
             this.groupBoxKoniec.TabStop = false;
             this.groupBoxKoniec.Text = "Koniec";
             this.groupBoxKoniec.Visible = false;
-            this.groupBoxKoniec.Enter += new System.EventHandler(this.GroupBoxKoniec_Enter);
             // 
-            // labelLiczbaRuchow
+            // labelOdgadnieta
             // 
-            this.labelLiczbaRuchow.AutoSize = true;
-            this.labelLiczbaRuchow.Location = new System.Drawing.Point(19, 27);
-            this.labelLiczbaRuchow.Name = "labelLiczbaRuchow";
-            this.labelLiczbaRuchow.Size = new System.Drawing.Size(79, 13);
-            this.labelLiczbaRuchow.TabIndex = 6;
-            this.labelLiczbaRuchow.Text = "Liczba ruchów:";
+            this.labelOdgadnieta.AutoSize = true;
+            this.labelOdgadnieta.ForeColor = System.Drawing.Color.Lime;
+            this.labelOdgadnieta.Location = new System.Drawing.Point(182, 40);
+            this.labelOdgadnieta.Name = "labelOdgadnieta";
+            this.labelOdgadnieta.Size = new System.Drawing.Size(62, 13);
+            this.labelOdgadnieta.TabIndex = 10;
+            this.labelOdgadnieta.Text = "Odgadniêta";
+            // 
+            // labelLiczbaRuchowD
+            // 
+            this.labelLiczbaRuchowD.AutoSize = true;
+            this.labelLiczbaRuchowD.Location = new System.Drawing.Point(104, 27);
+            this.labelLiczbaRuchowD.Name = "labelLiczbaRuchowD";
+            this.labelLiczbaRuchowD.Size = new System.Drawing.Size(13, 13);
+            this.labelLiczbaRuchowD.TabIndex = 9;
+            this.labelLiczbaRuchowD.Text = "0";
+            // 
+            // labelWylosowanaD
+            // 
+            this.labelWylosowanaD.AutoSize = true;
+            this.labelWylosowanaD.Location = new System.Drawing.Point(104, 40);
+            this.labelWylosowanaD.Name = "labelWylosowanaD";
+            this.labelWylosowanaD.Size = new System.Drawing.Size(13, 13);
+            this.labelWylosowanaD.TabIndex = 8;
+            this.labelWylosowanaD.Text = "0";
             // 
             // labelWylosowana
             // 
@@ -233,27 +260,34 @@ namespace GraGUI
             this.labelWylosowana.TabIndex = 7;
             this.labelWylosowana.Text = "Wylosowana:";
             // 
-            // labelWylosowanaD
+            // labelLiczbaRuchow
             // 
-            this.labelWylosowanaD.AutoSize = true;
-            this.labelWylosowanaD.Location = new System.Drawing.Point(96, 40);
-            this.labelWylosowanaD.Name = "labelWylosowanaD";
-            this.labelWylosowanaD.Size = new System.Drawing.Size(0, 13);
-            this.labelWylosowanaD.TabIndex = 8;
+            this.labelLiczbaRuchow.AutoSize = true;
+            this.labelLiczbaRuchow.Location = new System.Drawing.Point(19, 27);
+            this.labelLiczbaRuchow.Name = "labelLiczbaRuchow";
+            this.labelLiczbaRuchow.Size = new System.Drawing.Size(79, 13);
+            this.labelLiczbaRuchow.TabIndex = 6;
+            this.labelLiczbaRuchow.Text = "Liczba ruchów:";
             // 
-            // labelLiczbaRuchowD
+            // timer1
             // 
-            this.labelLiczbaRuchowD.AutoSize = true;
-            this.labelLiczbaRuchowD.Location = new System.Drawing.Point(104, 27);
-            this.labelLiczbaRuchowD.Name = "labelLiczbaRuchowD";
-            this.labelLiczbaRuchowD.Size = new System.Drawing.Size(0, 13);
-            this.labelLiczbaRuchowD.TabIndex = 9;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(201, 103);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(30, 13);
+            this.labelTimer.TabIndex = 6;
+            this.labelTimer.Text = "Czas";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 473);
+            this.ClientSize = new System.Drawing.Size(304, 471);
             this.Controls.Add(this.groupBoxKoniec);
             this.Controls.Add(this.groupBoxGra);
             this.Controls.Add(this.buttonPrzerwij);
@@ -295,5 +329,8 @@ namespace GraGUI
         private System.Windows.Forms.Label labelWylosowana;
         private System.Windows.Forms.Label labelLiczbaRuchow;
         private System.Windows.Forms.Label labelLiczbaRuchowD;
+        private System.Windows.Forms.Label labelOdgadnieta;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label labelTimer;
     }
 }

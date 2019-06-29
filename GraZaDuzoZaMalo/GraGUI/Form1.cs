@@ -13,7 +13,9 @@ namespace GraGUI
 {
     public partial class Form1 : Form
     {
-        private Gra g;
+        public static Gra g;
+        DateTime d = new DateTime();
+
 
         public Form1()
         {
@@ -24,7 +26,13 @@ namespace GraGUI
         {
             groupBoxLosuj.Visible = true;
             buttonNowaGra.Enabled = false;
+            groupBoxLosuj.Enabled = true;
             groupBoxKoniec.Visible = false;
+            groupBoxGra.Visible = false;
+            buttonHistoria.Enabled = false;
+            d = new DateTime(0);
+            labelOdpowiedz.Text = "OdpowiedŸ";
+            labelOdpowiedz.ForeColor = System.Drawing.Color.Black;
         }
 
         private void buttonLosuj_Click(object sender, EventArgs e)
@@ -42,27 +50,24 @@ namespace GraGUI
                 g = new Gra(a, b);
 
 
-                buttonLosuj.Enabled = false;
-                textBoxOd.Enabled = textBoxDo.Enabled = false;
                 groupBoxGra.Visible = true;
-
+                groupBoxLosuj.Enabled = false;
+                groupBoxGra.Enabled = true;
+                buttonHistoria.Enabled = true;
+                buttonPrzerwij.Enabled = true;
+                timer1.Enabled = true;
             }
             catch(System.FormatException)
             {
                 MessageBox.Show("B³êdne dane");
-                buttonLosuj.Enabled = true;
                 textBoxOd.Enabled = textBoxDo.Enabled = true;
                 groupBoxGra.Visible = false;
-
+                groupBoxLosuj.Enabled = true;
+                groupBoxGra.Enabled = false;
+                buttonHistoria.Enabled = false;
+                buttonPrzerwij.Enabled = false;
             }
-
-
             
-        }
-        private void TextBoxPropozycja_TextChanged(object sender, EventArgs e)
-        {
-            
-
         }
 
         private void ButtonPrzerwij_Click(object sender, EventArgs e)
@@ -70,37 +75,76 @@ namespace GraGUI
             groupBoxKoniec.Visible = true;
             buttonNowaGra.Enabled = true;
             g.Poddaj();
-        }
+            groupBoxKoniec.Visible = true;
+            labelWylosowanaD.Text = g.Wylosowana.ToString();
+            labelLiczbaRuchowD.Text = g.LicznikRuchow.ToString();
+            groupBoxGra.Enabled = false;
+            buttonNowaGra.Enabled = true;
+            buttonPrzerwij.Enabled = false;
+            labelOdgadnieta.Text = "Poddano";
+            labelOdgadnieta.ForeColor = System.Drawing.Color.Red;
+            timer1.Enabled = false;
 
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GroupBoxKoniec_Enter(object sender, EventArgs e)
-        {
 
         }
 
         private void ButtonSprawdz_Click(object sender, EventArgs e)
         {
-            var c = int.Parse(textBoxPropozycja.Text);
+            try
+            {
+                var c = int.Parse(textBoxPropozycja.Text);
 
-            var o = (int)g.Ocena(c);
+                var o = (int)g.Ocena(c);
 
-            if (o == 1)
-            {
-                labelOdpowiedz.Text = "Trafiono";
-                groupBoxKoniec.Visible = true;
+                if (o == 1)
+                {
+                    labelOdpowiedz.Text = "Trafiono";
+                    groupBoxKoniec.Visible = true;
+                    labelWylosowanaD.Text = g.Wylosowana.ToString();
+                    labelLiczbaRuchowD.Text = g.LicznikRuchow.ToString();
+                    groupBoxGra.Enabled = false;
+                    buttonNowaGra.Enabled = true;
+                    buttonPrzerwij.Enabled = false;
+                    labelOdpowiedz.ForeColor = System.Drawing.Color.Green;
+                    labelOdgadnieta.Text = "Odgadniêta";
+                    labelOdpowiedz.ForeColor = System.Drawing.Color.Green;
+                    timer1.Enabled = false;
+                }
+                else if (o == -1)
+                {
+                    labelOdpowiedz.Text = "Za ma³o";
+                    labelOdpowiedz.ForeColor = System.Drawing.Color.Blue;
+                }
+                else if (o == 0)
+                {
+                    labelOdpowiedz.Text = "Za du¿o";
+                    labelOdpowiedz.ForeColor = System.Drawing.Color.Red;
+                }
             }
-            else if (o == -1)
+            catch(System.FormatException)
             {
-                labelOdpowiedz.Text = "Za ma³o";
+                MessageBox.Show("B³êdna liczba");
             }
-            else if (o == 0)
-            {
-                labelOdpowiedz.Text = "Za du¿o";
-            }
+            
+        }
+
+        private void ButtonHistoria_Click(object sender, EventArgs e)
+        {
+            Form Historia = new HistoriaForm();
+            Historia.Show();
+        }
+
+        private void ButtonInfo_Click(object sender, EventArgs e)
+        {
+            Form About = new AboutBox1();
+            About.Show();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            
+            labelTimer.Text = d.ToString("HH:mm:ss");
+            d = d.AddSeconds(1);
         }
     }
 }

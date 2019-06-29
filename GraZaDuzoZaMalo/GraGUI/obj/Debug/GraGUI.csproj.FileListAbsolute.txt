@@ -11,3 +11,5 @@ D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csproj.CoreCompileInputs.cache
 D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.csproj.CopyComplete
 D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.exe
 D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.pdb
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.AboutBox1.resources
+D:\GraZaDuzoZaMalo\GraGUI\obj\Debug\GraGUI.HistoriaForm.resources
